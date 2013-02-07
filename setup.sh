@@ -1,6 +1,6 @@
 #!/bin/sh
 
-svn co -r 31639 svn://svn.openwrt.org/openwrt/trunk openwrt || exit 1
+svn co svn://svn.openwrt.org/openwrt/branches/attitude_adjustment openwrt || exit 1
 
 cd openwrt
 
