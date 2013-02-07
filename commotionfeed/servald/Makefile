@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=servald
+PKG_NAME:=serval
 PKG_VERSION:=2013-02-07
 PKG_RELEASE=$(PKG_SOURCE_VERSION)
 
@@ -17,18 +17,18 @@ PKG_BUILD_DEPENDS:=
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/serval-dna
-	SECTION:=utils
-	CATEGORY:=Utilities
-	TITLE:=serval-dna
+define Package/serval
+	SECTION:=commotion
+	CATEGORY:=Commotion
+	TITLE:=Serval Mesh
 	DEPENDS:=+libpthread +librt
 endef
 
-define Package/serval-dna/description
+define Package/serval/description
   Serval Daemon
 endef
 
-define Package/serval-dna/install
+define Package/serval/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/servald $(1)/usr/bin
 endef
@@ -37,6 +37,6 @@ define Build/Configure
   $(call Build/Configure/Default,--enable-instance-path=/etc/serval)
 endef
 
-$(eval $(call BuildPackage,serval-dna))
+$(eval $(call BuildPackage,serval))
 
 
