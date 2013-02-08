@@ -33,6 +33,11 @@ define Package/serval/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/servald $(1)/usr/bin
 endef
 
+define Package/conffiles
+	/etc/serval/servald.conf
+	/etc/rc.d/S41servald
+	/etc/rc.d/S39servalmesh-config
+
 define Build/Configure
   $(call Build/Configure/Default,--enable-instance-path=/etc/serval)
 endef
