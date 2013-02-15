@@ -7,7 +7,7 @@ PKG_RELEASE=$(PKG_SOURCE_VERSION)
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/servalproject/serval-dna.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=e01b2cacd8ca6c783750347637e3ce3795adea82
+PKG_SOURCE_VERSION:=d975dd58eba9b21d20fcc4df7d31ddf67f3a4b9b
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
 
 PKG_FIXUP:=autoreconf
@@ -33,10 +33,17 @@ define Package/serval/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/servald $(1)/usr/bin
 endef
 
-define Package/conffiles
-	/etc/serval/servald.conf
-	/etc/rc.d/S41servald
-	/etc/rc.d/S39servalmesh-config
+#define Package/serval/postinst
+##!/bin/sh
+#echo "Configuring IP addresses for mesh interfaces"
+#/etc/rc.d/S39servalmesh-config
+#endef
+
+#define Package/conffiles
+#	/etc/serval/servald.conf
+#	/etc/rc.d/S41servald
+#	/etc/rc.d/S39servalmesh-config
+#endef
 
 define Build/Configure
   $(call Build/Configure/Default,--enable-instance-path=/etc/serval)
